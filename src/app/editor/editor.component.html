@@ -1,0 +1,9 @@
+<section class="editor">
+  <svg #svg width="1000" height="500">
+    <svg:g
+      app-object
+      *ngFor="let object of objects"
+      [object]="object"
+    ></svg:g>
+  </svg>
+</section>

@@ -1,0 +1,16 @@
+$width: 100px;
+$border-width: 3px;
+$padding: 5px;
+
+.toolbox {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  box-sizing: border-box;
+  border: $border-width solid black;
+  padding: $padding;
+
+  & > app-download {
+    grid-column: span 2;
+  }
+}

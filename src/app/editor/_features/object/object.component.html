@@ -1,0 +1,10 @@
+<ng-container [ngSwitch]="object.type">
+  <svg:g 
+    app-circle
+    *ngSwitchCase="ObjectType.CIRCLE"
+    [circle]="$any(object)" />
+  <svg:g 
+    app-rectangle
+    *ngSwitchCase="ObjectType.RECTANGLE"
+    [rectangle]="$any(object)" />
+</ng-container>

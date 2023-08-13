@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+$toolbox-button-size: 25px;
+.toolbox-button {
+  display: flex;
+  width: $toolbox-button-size;
+  height: $toolbox-button-size;
+  align-items: center;
+  justify-content: center;
+}

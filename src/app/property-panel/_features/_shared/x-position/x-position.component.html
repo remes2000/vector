@@ -1,0 +1,8 @@
+<section>
+  <label>x</label>
+  <input 
+    type="number"
+    [ngModel]="value"
+    [ngModelOptions]="{ updateOn: 'blur' }"
+    (ngModelChange)="change($event)" />
+</section>

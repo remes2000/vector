@@ -1,3 +1,3 @@
-<button class="toolbox-button">
+<button class="toolbox-button" [class.active]="active$ | async" (click)="click()">
   <fa-icon [icon]="faSquareFull" />
 </button>

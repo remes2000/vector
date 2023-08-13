@@ -1,0 +1,9 @@
+$width: 200px;
+$border-width: 3px;
+$padding: 5px;
+
+.property-panel {
+  width: $width;
+  border: $border-width solid black;
+  padding: $padding;
+}

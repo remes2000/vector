@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectSelectedObject } from '../_store/editor/editor.selectors';
 import { ObjectType } from '../_enums/object-type.enum';
+import { map, withLatestFrom } from 'rxjs';
+import { sceneSelector } from '../_store/scene/scene.selectors';
 
 @Component({
   selector: 'app-property-panel',
@@ -14,5 +16,10 @@ export class PropertyPanelComponent {
 
   constructor(private readonly store: Store) {}
 
-  selectedObject$ = this.store.select(selectSelectedObject);
+  selectedObject$ = this.store.select(selectSelectedObject).pipe(
+    withLatestFrom(this.store.select(sceneSelector)),
+    map(([selectedObjectId, scene]) => {
+      return scene.find((o) => o.id === selectedObjectId);
+    })
+  );
 }

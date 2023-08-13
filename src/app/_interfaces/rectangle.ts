@@ -6,5 +6,6 @@ export interface Rectangle {
   y: number;
   width: number;
   height: number;
+  fill: string;
   type: ObjectType.RECTANGLE,
 }

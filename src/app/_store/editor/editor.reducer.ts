@@ -13,7 +13,7 @@ export const editorReducer = createReducer(
   on(EditorActions.setMode, (state, { mode }) => {
     return { ...state, mode };
   }),
-  on(EditorActions.selectObject, (state, { object }) => {
-    return { ...state, selectedObject: object };
+  on(EditorActions.selectObject, (state, { objectId }) => {
+    return { ...state, selectedObject: objectId };
   }),
 )

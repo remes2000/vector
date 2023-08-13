@@ -1,1 +1,4 @@
-<app-x-position [value]="rectangle.x" />
+<app-numeric-property label="x" [value]="rectangle.x" (change)="patch({ x: $event })" />
+<app-numeric-property label="y" [value]="rectangle.y" (change)="patch({ y: $event })" />
+<app-numeric-property label="w" [value]="rectangle.width" (change)="patch({ width: $event })" />
+<app-numeric-property label="h" [value]="rectangle.height" (change)="patch({ height: $event })" />

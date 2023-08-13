@@ -1,0 +1,8 @@
+<section>
+  <label *ngIf="label">{{ label }}</label>
+  <input 
+    type="color"
+    [ngModel]="value"
+    [ngModelOptions]="{ updateOn: 'blur' }"
+    (ngModelChange)="change.emit($event)" />
+</section>

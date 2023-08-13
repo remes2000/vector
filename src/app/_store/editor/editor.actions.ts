@@ -8,6 +8,6 @@ export const EditorActions = createActionGroup({
   source: 'Editor',
   events: {
     'Set Mode': props<{ mode: EditorMode }>(),
-    'Select Object': props<{ object: SvgObject }>(),
+    'Select Object': props<{ objectId: string }>(),
   }
 })

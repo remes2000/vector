@@ -30,7 +30,7 @@ export class ObjectComponent {
   async click(event: MouseEvent) {
     const mode = await firstValueFrom(this.mode$);
     if (mode === EditorMode.POINTER) {
-      this.store.dispatch(EditorActions.selectObject({ object: this.object }));
+      this.store.dispatch(EditorActions.selectObject({ objectId: this.object.id }));
       event.stopPropagation();
     }
   }

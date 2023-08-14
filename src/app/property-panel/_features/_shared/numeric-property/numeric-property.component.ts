@@ -13,5 +13,5 @@ import { FormsModule } from '@angular/forms';
 export class NumericPropertyComponent {
   @Input({ required: true }) value: number;
   @Input() label = '';
-  @Output() change = new EventEmitter<number>();
+  @Output() valueSet = new EventEmitter<number>();
 }

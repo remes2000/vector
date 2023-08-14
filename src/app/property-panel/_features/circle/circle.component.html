@@ -1,4 +1,4 @@
-<app-numeric-property label="x" [value]="circle.x" (change)="patch({ x: $event })" />
-<app-numeric-property label="y" [value]="circle.y" (change)="patch({ y: $event })" />
-<app-numeric-property label="r" [value]="circle.radius" (change)="patch({ radius: $event })" />
-<app-color-property label="c" [value]="circle.fill" (change)="patch({ fill: $event })" />
+<app-numeric-property label="x" [value]="circle.x" (valueSet)="patch({ x: $event })" />
+<app-numeric-property label="y" [value]="circle.y" (valueSet)="patch({ y: $event })" />
+<app-numeric-property label="r" [value]="circle.radius" (valueSet)="patch({ radius: $event })" />
+<app-color-property label="c" [value]="circle.fill" (valueSet)="patch({ fill: $event })" />

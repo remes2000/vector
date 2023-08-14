@@ -13,5 +13,5 @@ import { FormsModule } from '@angular/forms';
 export class ColorPropertyComponent {
   @Input({ required: true }) value: string;
   @Input() label = '';
-  @Output() change = new EventEmitter<string>();
+  @Output() valueSet = new EventEmitter<string>();
 }

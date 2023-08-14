@@ -21,7 +21,6 @@ export class CircleComponent {
   constructor(private readonly store: Store) {}
 
   patch(patch: PropertyPatch) {
-    console.log('patch', patch);
     this.store.dispatch(SceneActions.patchObject({ objectId: this.circle.id, patch }));
   }
 }

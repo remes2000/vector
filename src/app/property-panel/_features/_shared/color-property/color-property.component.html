@@ -4,5 +4,5 @@
     type="color"
     [ngModel]="value"
     [ngModelOptions]="{ updateOn: 'blur' }"
-    (ngModelChange)="change.emit($event)" />
+    (ngModelChange)="valueSet.emit($event)" />
 </section>

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { sceneSelector } from '../_store/scene/scene.selectors';
 import { selectEditorMode } from '../_store/editor/editor.selectors';
+import { selectAllObjects } from '../_store/scene/scene.selectors';
 
 @Component({
   selector: 'app-scene',
@@ -10,8 +10,22 @@ import { selectEditorMode } from '../_store/editor/editor.selectors';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SceneComponent {
+  width = 1000;
+  height = 500;
+  objects$ = this.store.select(selectAllObjects);
+  mode$ = this.store.select(selectEditorMode);
+  
   constructor(private readonly store: Store) {}
 
-  scene$ = this.store.select(sceneSelector);
-  mode$ = this.store.select(selectEditorMode);
+  mouseDown($event: Event): void {
+    console.log('mousedown', $event);
+  }
+
+  mouseMove($event: MouseEvent): void {
+    // console.log('mouse move', $event);
+  }
+
+  mouseUp($event: MouseEvent): void {
+    console.log('mouseup', $event);
+  }
 }

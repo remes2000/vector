@@ -1,8 +1,13 @@
 <section class="scene">
-  <svg #svg width="1000" height="500" [style.cursor]="mode$ | async | sceneCursor">
+  <svg #svg 
+    [attr.width]="width"
+    [attr.height]="height"
+    [style.cursor]="mode$ | async | sceneCursor"
+    appMouseEvents
+  >
     <svg:g
       app-object
-      *ngFor="let object of scene$ | async"
+      *ngFor="let object of objects$ | async"
       [object]="object"
     ></svg:g>
   </svg>

@@ -7,12 +7,14 @@ import { selectEditorMode } from 'src/app/_store/editor/editor.selectors';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EditorMode } from 'src/app/_enums/editor-mode.enum';
 import { fromEvent } from 'rxjs';
+import { CircleStrategy } from './_strategies/circle/circle.strategy';
 
 @Directive({
   selector: '[appMouseEvents]',
   providers: [
     PointerStrategy,
     RectangleStrategy,
+    CircleStrategy,
   ],
   standalone: true
 })
@@ -25,6 +27,7 @@ export class MouseEventsDirective implements OnInit {
     private readonly store: Store,
     private readonly pointerStrategy: PointerStrategy,
     private readonly rectangleStrategy: RectangleStrategy,
+    private readonly circleStrategy: CircleStrategy,
   ) { }
 
   ngOnInit(): void {
@@ -47,7 +50,7 @@ export class MouseEventsDirective implements OnInit {
         this.strategy = this.rectangleStrategy;
         break;
       case EditorMode.CIRCLE:
-        this.strategy = this.pointerStrategy;
+        this.strategy = this.circleStrategy;
         break;
     }
     this.strategy.reset();

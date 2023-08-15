@@ -6,6 +6,7 @@ import { EditorMode } from "src/app/_enums/editor-mode.enum";
 export const initialState: EditorState = {
   mode: EditorMode.POINTER,
   selectedObject: null,
+  drag: null,
 };
 
 export const editorReducer = createReducer(
@@ -15,5 +16,11 @@ export const editorReducer = createReducer(
   }),
   on(EditorActions.selectObject, (state, { objectId }) => {
     return { ...state, selectedObject: objectId };
+  }),
+  on(EditorActions.startDrag, (state, { drag }) => {
+    return { ...state, drag };
+  }),
+  on(EditorActions.endDrag, (state) => {
+    return { ...state, drag: null };
   }),
 )

@@ -7,3 +7,5 @@ const featureSelector = createFeatureSelector<EditorState>(FEATURE_MODULE_NAME);
 export const selectEditorMode = createSelector([featureSelector], ({ mode }) => mode);
 
 export const selectSelectedObject = createSelector([featureSelector], ({ selectedObject }) => selectedObject);
+
+export const selectDrag = createSelector([featureSelector], ({ drag }) => drag);

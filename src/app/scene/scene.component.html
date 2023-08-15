@@ -7,7 +7,7 @@
   >
     <svg:g
       app-object
-      *ngFor="let object of objects$ | async"
+      *ngFor="let object of objects$ | async; trackBy: trackById"
       [object]="object"
     ></svg:g>
   </svg>

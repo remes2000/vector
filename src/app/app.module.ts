@@ -5,7 +5,7 @@ import { ToolboxModule } from './toolbox/toolbox.module';
 import { SceneModule } from './scene/scene.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { REDUCERS } from './_store/reducers';
+import { META_REDUCERS, REDUCERS } from './_store/reducers';
 import { PropertyPanelModule } from './property-panel/property-panel.module';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { PropertyPanelModule } from './property-panel/property-panel.module';
     ToolboxModule,
     SceneModule,
     PropertyPanelModule,
-    StoreModule.forRoot(REDUCERS),
+    StoreModule.forRoot(REDUCERS, { metaReducers: META_REDUCERS }),
     StoreDevtoolsModule.instrument({ maxAge: 100 }),
   ],
   providers: [],

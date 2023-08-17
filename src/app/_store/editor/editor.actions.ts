@@ -1,7 +1,6 @@
 import { createAction, createActionGroup, emptyProps, props } from "@ngrx/store";
 import { EditorMode } from "src/app/_enums/editor-mode.enum";
 import { DragStart } from "src/app/_interfaces/drag-start";
-import { SvgObject } from "src/app/_interfaces/svg-object";
 
 export const setMode = createAction('set mode', props<{ mode: EditorMode }>())
 

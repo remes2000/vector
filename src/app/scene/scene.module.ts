@@ -4,6 +4,7 @@ import { SceneComponent } from './scene.component';
 import { ObjectComponent } from './_features/object/object.component';
 import { SceneCursorPipe } from './_pipes/scene-cursor.pipe';
 import { MouseEventsDirective } from './_features/mouse-events/mouse-events.directive';
+import { ApplyOverridePipe } from '../shared/_pipes/apply-override/apply-override.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { MouseEventsDirective } from './_features/mouse-events/mouse-events.dire
     ObjectComponent,
     SceneCursorPipe,
     MouseEventsDirective,
+    ApplyOverridePipe,
   ],
   exports: [
     SceneComponent

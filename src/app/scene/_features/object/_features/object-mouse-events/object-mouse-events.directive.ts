@@ -3,10 +3,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { fromEvent, withLatestFrom } from 'rxjs';
 import { EditorMode } from 'src/app/_enums/editor-mode.enum';
-import { Point } from 'src/app/_interfaces/point';
 import { SvgObject } from 'src/app/_interfaces/svg-object';
 import { EditorActions } from 'src/app/_store/editor/editor.actions';
 import { selectEditorMode } from 'src/app/_store/editor/editor.selectors';
+import { SceneActions } from 'src/app/_store/scene/scene.actions';
 
 @Directive({
   selector: '[appObjectMouseEvents]',
@@ -45,6 +45,7 @@ export class ObjectMouseEventsDirective implements OnInit {
         originalPosition: { x: this.object.x, y: this.object.y },
         startCursorPosition: { x: offsetX, y: offsetY }
       },
-    }))
+    }));
+    this.store.dispatch(SceneActions.startOverride({ objectId: this.object.id }));
   }
 }

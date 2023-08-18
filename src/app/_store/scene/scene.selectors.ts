@@ -15,3 +15,5 @@ export const selectAllObjects = createSelector(
     return [...(newObject ? [newObject] : []), ...objects];
   }
 )
+
+export const selectOverride = createSelector([sceneSelector], ({ override }) => override);

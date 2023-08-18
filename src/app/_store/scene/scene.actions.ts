@@ -10,5 +10,8 @@ export const SceneActions = createActionGroup({
     'Start New Object': props<{ object: SvgObject }>(),
     'Patch New Object': props<{ patch: PropertyPatch }>(),
     'Approve New Object': emptyProps(),
+    'Start Override': props<{ objectId: string }>(),
+    'Patch Override': props<{ patch: Partial<SvgObject> }>(),
+    'Clear Override': emptyProps(),
   }
 })

@@ -26,23 +26,29 @@ export class PointerStrategy implements MouseEventStrategy {
 
   private async handleMouseUpAsync({ offsetX, offsetY }: MouseEvent): Promise<void> {
     const startDrag = await firstValueFrom(this.store.select(selectDrag));
+    const selectedObjectId = await firstValueFrom(this.store.select(selectSelectedObject));
     if (startDrag) {
-      await this.patchDraggedObject(startDrag, { x: offsetX, y: offsetY });
+      this.patchDraggedObject(startDrag, { x: offsetX, y: offsetY }, selectedObjectId);
       this.store.dispatch(EditorActions.endDrag());
+      this.store.dispatch(SceneActions.clearOverride());
     }
   }
 
   private async handleMouseMoveAsync({ offsetX, offsetY }: MouseEvent): Promise<void> {
     const startDrag = await firstValueFrom(this.store.select(selectDrag));
     if (startDrag) {
-      await this.patchDraggedObject(startDrag, { x: offsetX, y: offsetY });
+      this.patchOverride(startDrag, { x: offsetX, y: offsetY });
     }
   }
 
-  private async patchDraggedObject(startDrag: DragStart, currentCursorPosition: Point): Promise<void> {
-    const selectedObjectId = await firstValueFrom(this.store.select(selectSelectedObject));
+  private patchDraggedObject(startDrag: DragStart, currentCursorPosition: Point, objectId: string): void {
     const newPosition = this.calculateObjectPosition(startDrag, currentCursorPosition);
-    this.store.dispatch(SceneActions.patchObject({ objectId: selectedObjectId, patch: { ...newPosition } }));
+    this.store.dispatch(SceneActions.patchObject({ objectId, patch: { ...newPosition }}));
+  }
+
+  private patchOverride(startDrag: DragStart, currentCursorPosition: Point): void {
+    const newPosition = this.calculateObjectPosition(startDrag, currentCursorPosition);
+    this.store.dispatch(SceneActions.patchOverride({ patch: { ...newPosition }}));
   }
 
   private calculateObjectPosition(dragStart: DragStart, currentCursorPosition: Point): Point {

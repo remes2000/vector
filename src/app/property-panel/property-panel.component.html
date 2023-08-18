@@ -1,4 +1,4 @@
-<aside *ngIf="selectedObject$ | async as selectedObject" class="property-panel">
+<aside *ngIf="selectedObject$ | async | applyOverride : (override$ | async) as selectedObject" class="property-panel">
   <ng-container [ngSwitch]="selectedObject.type">
     <app-circle *ngSwitchCase="ObjectType.CIRCLE" [circle]="$any(selectedObject)" />
     <app-rectangle *ngSwitchCase="ObjectType.RECTANGLE" [rectangle]="$any(selectedObject)" />

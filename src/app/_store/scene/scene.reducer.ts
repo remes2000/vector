@@ -33,6 +33,7 @@ export const initialState: SceneState = {
     },
   ],
   newObject: null,
+  override: null,
 }
 
 export const sceneReducer = createReducer(
@@ -73,4 +74,22 @@ export const sceneReducer = createReducer(
       newObject: null,
     }
   }),
+  on(SceneActions.startOverride, (state, { objectId }) => {
+    return {
+      ...state,
+      override: { id: objectId },
+    }
+  }),
+  on(SceneActions.patchOverride, (state, { patch }) => {
+    return {
+      ...state,
+      override: { ...state.override, ...patch },
+    }
+  }),
+  on(SceneActions.clearOverride, (state) => {
+    return {
+      ...state,
+      override: null,
+    }
+  })
 )

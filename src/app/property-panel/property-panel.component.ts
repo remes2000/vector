@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { selectSelectedObject } from '../_store/editor/editor.selectors';
 import { ObjectType } from '../_enums/object-type.enum';
 import { combineLatest, map, withLatestFrom } from 'rxjs';
-import { selectObjects } from '../_store/scene/scene.selectors';
+import { selectObjects, selectOverride } from '../_store/scene/scene.selectors';
 
 @Component({
   selector: 'app-property-panel',
@@ -22,4 +22,6 @@ export class PropertyPanelComponent {
   ]).pipe((map(([selectedObjectId, objects]) => {
     return objects.find((o) => o.id === selectedObjectId);
   })));
+
+  override$ = this.store.select(selectOverride);
 }
